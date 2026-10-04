@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Fieldnote Care | Design direction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f6f5ef;
+      --paper-deep: #ecebe2;
+      --white: #fffefa;
+      --ink: #24342e;
+      --ink-soft: #56635c;
+      --ink-muted: #747c74;
+      --line: #d7d8cf;
+      --fern: #456c58;
+      --fern-wash: #e5ede5;
+      --lake: #416c78;
+      --lake-wash: #e3edef;
+      --citrus: #d7a939;
+      --citrus-wash: #f5edcf;
+      --coral: #b94e3d;
+      --coral-wash: #f5e6e1;
+      --display: "DM Serif Display", Georgia, serif;
+      --body: "DM Sans", "Helvetica Neue", sans-serif;
+      --text-12: 12px;
+      --text-14: 14px;
+      --text-16: 16px;
+      --text-20: 20px;
+      --text-28: 28px;
+      --text-40: 40px;
+      --text-64: 64px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-12: 48px;
+      --space-16: 64px;
+      --space-24: 96px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --shadow-paper: 0 1px 2px rgb(36 52 46 / 7%), 0 8px 24px rgb(36 52 46 / 5%);
+      --shadow-float: 0 8px 24px rgb(36 52 46 / 10%), 0 2px 6px rgb(36 52 46 / 6%);
+      --content: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image: radial-gradient(#24342e0a .65px, transparent .65px);
+      background-size: 7px 7px;
+      font-family: var(--body);
+      font-size: var(--text-16);
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration-color: #456c5880; text-underline-offset: 3px; }
+    a:hover { color: var(--fern); }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .shell { max-width: var(--content); padding: 0 32px; margin: 0 auto; }
+    .masthead {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 68px; border-bottom: 1px solid var(--line); font-size: var(--text-12);
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .11em; }
+    .mark { width: 22px; height: 22px; display: grid; place-items: center; border: 1px solid var(--fern); border-radius: 50%; color: var(--fern); font-family: var(--display); font-size: 15px; letter-spacing: 0; }
+    .edition { color: var(--ink-muted); }
+    .hero { padding: 62px 0 48px; border-bottom: 1px solid var(--line); }
+    .eyebrow { margin: 0 0 14px; color: var(--fern); font-size: var(--text-12); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 800px; margin-bottom: 20px; font-family: var(--display); font-size: var(--text-64); font-weight: 400; line-height: 1.04; }
+    .hero-copy { max-width: 640px; margin-bottom: 0; color: var(--ink-soft); font-size: var(--text-20); }
+    .concept-note { display: flex; gap: 12px; max-width: 760px; margin-top: 24px; padding: 14px 16px; border-left: 2px solid var(--citrus); background: #fffefa99; color: var(--ink-soft); font-size: var(--text-14); }
+    .concept-note strong { color: var(--ink); white-space: nowrap; }
+    .index { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 20px 0 0; font-size: var(--text-12); color: var(--ink-soft); }
+    .index a { text-decoration: none; }
+    section { padding: 56px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 20px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+    .section-head h2 { margin: 0; font-family: var(--display); font-size: var(--text-40); font-weight: 400; line-height: 1.1; }
+    .section-head p { max-width: 420px; margin: 0; color: var(--ink-muted); font-size: var(--text-14); }
+    .ref-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .ref-card { overflow: hidden; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-paper); }
+    .ref-image { height: 190px; overflow: hidden; background: var(--paper-deep); }
+    .ref-image img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .ref-card:nth-child(1) .ref-image img { object-position: 50% 57%; }
+    .ref-card:nth-child(2) .ref-image img { object-position: 50% 44%; }
+    .reference-copy { padding: 16px; }
+    .reference-copy h3 { margin: 0 0 5px; font-size: var(--text-16); }
+    .reference-copy p { min-height: 44px; margin: 0 0 10px; color: var(--ink-soft); font-size: var(--text-14); }
+    .source { color: var(--ink-muted); font-size: var(--text-12); }
+    .source a { color: var(--fern); }
+    .print-specimen { height: 100%; min-height: 190px; display: grid; grid-template-columns: 1fr 1fr; background: #d9e1d5; }
+    .specimen-leaf { position: relative; display: grid; place-items: center; background: #dce4d8; }
+    .specimen-leaf::before, .specimen-leaf::after { content: ""; position: absolute; width: 72px; height: 112px; border: 1px solid #55725e; border-radius: 100% 0 100% 0; transform: rotate(-34deg); }
+    .specimen-leaf::after { width: 50px; height: 76px; transform: translate(30px, 28px) rotate(42deg); }
+    .specimen-stock { display: flex; flex-direction: column; justify-content: space-between; padding: 22px 18px; background: #faf7ec; }
+    .specimen-stock small { color: var(--fern); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .specimen-stock span { font-family: var(--display); font-size: 25px; line-height: 1.05; }
+    .specimen-stock i { color: var(--ink-muted); font-size: 11px; font-style: normal; }
+    .mood-note { margin: 18px 0 0; color: var(--ink-muted); font-size: var(--text-12); }
+    .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .voice-lead { padding-right: 18px; }
+    .voice-lead h3 { margin-bottom: 14px; font-family: var(--display); font-size: var(--text-28); font-weight: 400; line-height: 1.2; }
+    .voice-lead p { color: var(--ink-soft); }
+    .voice-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+    .voice-rule { padding-top: 10px; border-top: 1px solid var(--line); }
+    .voice-rule strong { display: block; margin-bottom: 5px; font-size: var(--text-14); }
+    .voice-rule p { margin: 0; color: var(--ink-soft); font-size: var(--text-14); }
+    .say { padding: 18px; margin-top: 22px; background: var(--fern-wash); border-radius: var(--radius-sm); }
+    .say span { display: block; color: var(--ink-muted); font-size: var(--text-12); text-transform: uppercase; letter-spacing: .08em; }
+    .say p { margin: 7px 0 0; font-family: var(--display); font-size: var(--text-20); }
+    .tokens { display: grid; grid-template-columns: 1.15fr .85fr; gap: 44px; }
+    .token-block + .token-block { margin-top: 30px; }
+    .token-block h3 { margin-bottom: 12px; font-size: var(--text-16); }
+    .palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .swatch { min-width: 0; }
+    .swatch-chip { height: 58px; border: 1px solid #24342e1f; border-radius: var(--radius-sm); }
+    .swatch strong, .swatch code { display: block; font-size: var(--text-12); }
+    .swatch strong { margin-top: 6px; }
+    .swatch code { color: var(--ink-muted); font-family: var(--body); }
+    .token-note { margin: 12px 0 0; color: var(--ink-muted); font-size: var(--text-12); }
+    .type-spec { display: grid; gap: 7px; }
+    .type-row { display: grid; grid-template-columns: 42px 1fr 48px; align-items: baseline; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 5px; }
+    .type-row span, .type-row code { color: var(--ink-muted); font-size: var(--text-12); }
+    .type-row code { text-align: right; }
+    .type-sample { line-height: 1.15; }
+    .display-sample { font-family: var(--display); }
+    .spacing-list { display: flex; align-items: end; gap: 8px; min-height: 74px; padding-bottom: 3px; }
+    .space-item { flex: 1; min-width: 20px; text-align: center; }
+    .space-bar { max-width: 58px; min-width: 4px; margin: 0 auto 5px; background: var(--fern); border-radius: 2px 2px 0 0; }
+    .space-item code { color: var(--ink-muted); font-size: 10px; }
+    .shape-row { display: flex; align-items: center; gap: 12px; }
+    .shape { width: 66px; height: 42px; background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow-paper); }
+    .shape-label { color: var(--ink-muted); font-size: var(--text-12); }
+    .shadow-demo { height: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .shadow-demo span { display: grid; place-items: center; background: var(--white); border-radius: var(--radius-md); color: var(--ink-muted); font-size: var(--text-12); }
+    .shadow-demo span:first-child { box-shadow: var(--shadow-paper); }
+    .shadow-demo span:last-child { box-shadow: var(--shadow-float); }
+    .screen-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .screen-card { min-width: 0; }
+    .screen-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .screen-heading h3 { margin: 0; font-size: var(--text-16); }
+    .screen-heading span { color: var(--ink-muted); font-size: var(--text-12); }
+    .screen-frame { min-height: 365px; padding: 16px 13px 12px; overflow: hidden; border: 1px solid #c9ccc2; border-radius: 13px; background: #fbfaf6; box-shadow: var(--shadow-paper); color: var(--ink); font-size: 11px; }
+    .screen-frame.landing { min-height: 390px; background: #edf0e8; }
+    .mini-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 13px; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 9px; }
+    .mini-brand { color: var(--ink); font-weight: 700; letter-spacing: .1em; }
+    .mini-title { margin: 16px 0 4px; font-family: var(--display); font-size: 23px; font-weight: 400; line-height: 1.08; }
+    .mini-sub { margin: 0 0 13px; color: var(--ink-soft); font-size: 10px; line-height: 1.45; }
+    .mini-button { display: grid; place-items: center; min-height: 30px; margin-top: 8px; padding: 5px; border-radius: 4px; background: var(--fern); color: white; font-weight: 600; text-align: center; }
+    .mini-button.secondary { border: 1px solid var(--line); background: transparent; color: var(--ink); }
+    .mini-label { margin: 11px 0 5px; color: var(--ink-muted); font-size: 9px; }
+    .mini-input { height: 28px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 4px; background: white; color: var(--ink-muted); font-size: 9px; }
+    .mini-art { height: 91px; position: relative; display: grid; place-items: center; overflow: hidden; margin: 11px -2px 13px; background: #dce5d9; border-radius: 4px; }
+    .mini-art::before { content: ""; width: 75px; height: 102px; border: 1px solid #64806b; border-radius: 100% 0 100% 0; transform: rotate(-39deg); }
+    .mini-art::after { content: ""; position: absolute; width: 1px; height: 120px; background: #64806b; transform: rotate(42deg); }
+    .mini-rule { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .mini-rule strong { font-size: 10px; }
+    .mini-tag { padding: 3px 6px; border-radius: var(--radius-pill); background: var(--fern-wash); color: var(--fern); font-size: 8px; white-space: nowrap; }
+    .mini-tag.blue { background: var(--lake-wash); color: var(--lake); }
+    .mini-tag.yellow { background: var(--citrus-wash); color: #725a16; }
+    .mini-tag.red { background: var(--coral-wash); color: var(--coral); }
+    .mini-person { display: flex; align-items: center; gap: 8px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .mini-avatar { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; background: var(--fern-wash); color: var(--fern); font-family: var(--display); font-size: 12px; }
+    .mini-person div:nth-child(2) { flex: 1; }
+    .mini-person strong, .mini-person small { display: block; }
+    .mini-person small { color: var(--ink-muted); font-size: 8px; }
+    .mini-nav { display: flex; justify-content: space-around; margin: 13px -4px 0; padding-top: 8px; border-top: 1px solid var(--line); color: var(--ink-muted); font-size: 8px; }
+    .mini-nav b { color: var(--fern); font-weight: 700; }
+    .mini-chart { height: 80px; display: flex; align-items: end; justify-content: space-around; padding: 8px; margin-top: 9px; background: var(--lake-wash); border-radius: 4px; }
+    .mini-chart i { width: 11px; border-radius: 5px 5px 0 0; background: var(--lake); }
+    .mini-alert { display: flex; align-items: center; gap: 7px; padding: 8px; margin: 10px 0; border: 1px solid #b94e3d55; border-radius: 4px; background: var(--coral-wash); color: #7f352a; font-size: 9px; }
+    .mini-sos { display: grid; place-items: center; width: 112px; height: 112px; margin: 17px auto 12px; border: 2px solid var(--coral); border-radius: 50%; background: var(--coral-wash); color: var(--coral); font-size: 13px; font-weight: 700; }
+    .screen-caption { margin: 9px 0 0; color: var(--ink-muted); font-size: var(--text-12); line-height: 1.45; }
+    .screen-caption strong { color: var(--ink-soft); }
+    .system-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .system-panel { padding-top: 15px; border-top: 1px solid var(--line); }
+    .system-panel h3 { margin-bottom: 10px; font-size: var(--text-20); }
+    .system-panel p, .system-panel li { color: var(--ink-soft); font-size: var(--text-14); }
+    .system-panel ul { padding-left: 18px; margin-bottom: 0; }
+    .icon-samples { display: flex; gap: 14px; margin: 15px 0 10px; }
+    .icon-chip { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--white); }
+    .icon-chip svg { width: 23px; height: 23px; fill: none; stroke: var(--fern); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .icon-chip.urgent { border-color: #c26b5c; background: var(--coral-wash); }
+    .icon-chip.urgent svg { stroke: var(--coral); }
+    .approval { display: flex; align-items: start; justify-content: space-between; gap: 24px; padding: 24px; margin: 32px 0 60px; border: 1px solid #b9c8bb; border-radius: var(--radius-md); background: var(--fern-wash); }
+    .approval h2 { margin: 0 0 5px; font-family: var(--display); font-size: var(--text-28); font-weight: 400; }
+    .approval p { max-width: 620px; margin: 0; color: var(--ink-soft); font-size: var(--text-14); }
+    .approval .status { flex: 0 0 auto; padding: 7px 11px; border: 1px solid #73907b; border-radius: var(--radius-pill); color: var(--fern); font-size: var(--text-12); font-weight: 700; white-space: nowrap; }
+    footer { padding: 20px 0 32px; color: var(--ink-muted); font-size: var(--text-12); }
+
+    @media (max-width: 800px) {
+      .ref-grid { grid-template-columns: 1fr 1fr; }
+      .ref-card:last-child { grid-column: 1 / -1; }
+      .screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tokens { grid-template-columns: 1fr; gap: 28px; }
+    }
+    @media (max-width: 560px) {
+      .shell { padding: 0 18px; }
+      .hero { padding: 42px 0 32px; }
+      .hero h1 { font-size: var(--text-40); }
+      .hero-copy { font-size: var(--text-16); }
+      .concept-note { display: block; }
+      .concept-note strong { display: block; margin-bottom: 4px; }
+      section { padding: 40px 0; }
+      .section-head { display: block; }
+      .section-head h2 { margin-bottom: 8px; font-size: var(--text-28); }
+      .ref-grid, .voice-grid, .voice-rules, .screen-grid, .system-grid { grid-template-columns: 1fr; }
+      .ref-card:last-child { grid-column: auto; }
+      .ref-image { height: 170px; }
+      .screen-frame { min-height: 340px; }
+      .screen-frame.landing { min-height: 360px; }
+      .approval { display: block; padding: 18px; }
+      .approval .status { display: inline-block; margin-top: 14px; }
+      .edition { max-width: 120px; text-align: right; }
+    }
+    @media (max-width: 360px) {
+      .tokens > div { min-width: 0; }
+      .system-grid > div { min-width: 0; }
+      .palette { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .spacing-list { flex-wrap: wrap; justify-content: flex-start; }
+      .space-item { flex: 0 0 30px; }
+      .shape-row { flex-wrap: wrap; }
+      .type-row { grid-template-columns: 38px minmax(0, 1fr) 35px; gap: 5px; }
+      .icon-samples { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell masthead">
+    <div class="wordmark"><span class="mark">f</span> Fieldnote Care</div>
+    <div class="edition">Design direction / 01</div>
+  </header>
+
+  <main class="shell">
+    <div class="hero">
+      <p class="eyebrow">A visual system for everyday family care</p>
+      <h1>Care, kept close.</h1>
+      <p class="hero-copy">A family health journal with the clarity of a good clinic and the humanity of a notebook that stays on the kitchen table.</p>
+      <div class="concept-note"><strong>Working premise</strong><span>The screen list suggests a shared family-care journal: people, health history, food, and urgent help in one place. “Fieldnote Care” is a temporary name; the visual direction is the decision under review.</span></div>
+      <nav class="index" aria-label="Page sections">
+        <a href="#moodboard">01 / Moodboard</a><a href="#voice">02 / Voice</a><a href="#tokens">03 / Tokens</a><a href="#screens">04 / Screen sketches</a><a href="#art-direction">05 / Art direction</a>
+      </nav>
+    </div>
+
+    <section id="moodboard">
+      <div class="section-head">
+        <div><p class="eyebrow">01 / Collect</p><h2>Moodboard</h2></div>
+        <p>Print-shop tactility, personal journaling, and a little warmth. Borrow the feeling, not another product's interface.</p>
+      </div>
+      <div class="ref-grid">
+        <article class="ref-card">
+          <div class="ref-image"><img src="https://cdn.prod.website-files.com/66641a1aa7598439194a12b0/66641d7081cd94ecb550dc52_home-module-hero_img-p-800.webp" alt="An open journal used as a reference for a private, reflective tone" loading="lazy"></div>
+          <div class="reference-copy"><h3>The personal journal</h3><p>Make logging feel reflective and private, never like filling out a claims form.</p><div class="source">Reference: <a href="https://www.getstoic.com/" target="_blank" rel="noreferrer">Stoic journal</a></div></div>
+        </article>
+        <article class="ref-card">
+          <div class="ref-image"><img src="https://headspace-contentful.imgix.net/2pcwdm6O0Kt0rq19lLLCDC/624cec6f5e77f9d7e0d5de6f02c437b5/desktop_hero_1_june5_2x__1__copy.png?ixlib=js-3.8.0&auto=format%2Ccompress" alt="A colorful, friendly mental wellness illustration from Headspace" loading="lazy"></div>
+          <div class="reference-copy"><h3>Human, not hospital</h3><p>Borrow the generous, approachable tone; keep our own palette quieter and more print-like.</p><div class="source">Reference: <a href="https://www.headspace.com/" target="_blank" rel="noreferrer">Headspace</a></div></div>
+        </article>
+        <article class="ref-card">
+          <div class="ref-image print-specimen" role="img" aria-label="A botanical notebook cover and warm uncoated paper, composed as a material reference">
+            <div class="specimen-leaf"></div><div class="specimen-stock"><small>Notes for living</small><span>A little more<br>room to notice.</span><i>Uncoated stock / fern ink</i></div>
+          </div>
+          <div class="reference-copy"><h3>Stationery as ritual</h3><p>Botanical cover art, uncoated paper, restrained labels, and a useful margin around information.</p><div class="source">Reference: <a href="https://www.papier.com/stationery/notebooks/" target="_blank" rel="noreferrer">Papier notebooks</a></div></div>
+        </article>
+      </div>
+      <p class="mood-note">Image sources are linked above. The third panel is an original material-and-composition study, not a product screenshot.</p>
+    </section>
+
+    <section id="voice">
+      <div class="section-head">
+        <div><p class="eyebrow">02 / Write</p><h2>Brand voice</h2></div>
+        <p>One page to keep interface copy steady across routine care and high-stress moments.</p>
+      </div>
+      <div class="voice-grid">
+        <div class="voice-lead">
+          <h3>Knowledgeable enough to trust. Human enough to live with.</h3>
+          <p>Fieldnote Care helps families notice patterns, keep useful health details together, and know what to do next. We speak with calm confidence, respect the messiness of real life, and never pretend an app can replace a clinician. Care is practical and personal here: a shared record, a small next step, a clear handoff when more help is needed.</p>
+          <div class="say"><span>In the product</span><p>“A new note can help your care team see what has changed.”</p></div>
+        </div>
+        <div class="voice-rules">
+          <div class="voice-rule"><strong>Warm, never precious</strong><p>Use plain, thoughtful language. Avoid baby talk, wellness clichés, and forced cheer.</p></div>
+          <div class="voice-rule"><strong>Clear before clever</strong><p>Lead with the action or fact. Save metaphor for quiet editorial moments, not instructions.</p></div>
+          <div class="voice-rule"><strong>Support, don't diagnose</strong><p>Describe what is recorded. Encourage a clinician's advice; never infer a condition.</p></div>
+          <div class="voice-rule"><strong>Respect every family</strong><p>Use chosen names, inclusive caregiver language, and neutral assumptions about food and bodies.</p></div>
+          <div class="voice-rule"><strong>Small steps, no guilt</strong><p>Invite a useful next action. Missing a log is a blank space, not a failure or broken streak.</p></div>
+          <div class="voice-rule"><strong>Urgency without alarm</strong><p>In SOS, use short verbs, visible choices, and local emergency guidance. No cute copy.</p></div>
+          <div class="voice-rule"><strong>Do</strong><p>“Add what you noticed.”<br>“Share this note with Maya's clinician.”</p></div>
+          <div class="voice-rule"><strong>Don't</strong><p>“Oops, you forgot!”<br>“Your symptoms mean you have…”</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tokens">
+      <div class="section-head">
+        <div><p class="eyebrow">03 / Set</p><h2>Token sheet</h2></div>
+        <p>Quiet, legible defaults with semantic colors kept distinct. The SOS accent is reserved for urgent actions, not decoration.</p>
+      </div>
+      <div class="tokens">
+        <div>
+          <div class="token-block">
+            <h3>Palette</h3>
+            <div class="palette">
+              <div class="swatch"><div class="swatch-chip" style="background:#f6f5ef"></div><strong>Paper</strong><code>#F6F5EF</code></div>
+              <div class="swatch"><div class="swatch-chip" style="background:#fffefa"></div><strong>Sheet</strong><code>#FFFEFA</code></div>
+              <div class="swatch"><div class="swatch-chip" style="background:#24342e"></div><strong>Ink</strong><code>#24342E</code></div>
+              <div class="swatch"><div class="swatch-chip" style="background:#747c74"></div><strong>Margin</strong><code>#747C74</code></div>
+              <div class="swatch"><div class="swatch-chip" style="background:#456c58"></div><strong>Fern</strong><code>#456C58</code></div>
+              <div class="swatch"><div class="swatch-chip" style="background:#416c78"></div><strong>Lake</strong><code>#416C78</code></div>
+              <div class="swatch"><div class="swatch-chip" style="background:#d7a939"></div><strong>Citrus</strong><code>#D7A939</code></div>
+              <div class="swatch"><div class="swatch-chip" style="background:#b94e3d"></div><strong>Signal</strong><code>#B94E3D</code></div>
+            </div>
+            <p class="token-note">Paper and sheet are surfaces; ink carries text; fern marks primary actions and healthy states; lake separates informational data; citrus signals attention; signal is urgent only. Pair every status color with a label or icon.</p>
+          </div>
+          <div class="token-block">
+            <h3>Spacing / 4 px base</h3>
+            <div class="spacing-list" aria-label="Spacing scale: 4, 8, 12, 16, 24, 32, 48, 64, 96 pixels">
+              <div class="space-item"><div class="space-bar" style="height:4px"></div><code>4</code></div>
+              <div class="space-item"><div class="space-bar" style="height:8px"></div><code>8</code></div>
+              <div class="space-item"><div class="space-bar" style="height:12px"></div><code>12</code></div>
+              <div class="space-item"><div class="space-bar" style="height:16px"></div><code>16</code></div>
+              <div class="space-item"><div class="space-bar" style="height:24px"></div><code>24</code></div>
+              <div class="space-item"><div class="space-bar" style="height:32px"></div><code>32</code></div>
+              <div class="space-item"><div class="space-bar" style="height:48px"></div><code>48</code></div>
+              <div class="space-item"><div class="space-bar" style="height:64px"></div><code>64</code></div>
+              <div class="space-item"><div class="space-bar" style="height:74px"></div><code>96</code></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="token-block">
+            <h3>Type / DM Serif Display + DM Sans</h3>
+            <div class="type-spec">
+              <div class="type-row"><span>Display</span><div class="type-sample display-sample" style="font-size:64px">Aa</div><code>64</code></div>
+              <div class="type-row"><span>H1</span><div class="type-sample display-sample" style="font-size:40px">40 / Page title</div><code>40</code></div>
+              <div class="type-row"><span>H2</span><div class="type-sample display-sample" style="font-size:28px">28 / Section</div><code>28</code></div>
+              <div class="type-row"><span>H3</span><div class="type-sample" style="font-size:20px;font-weight:600">20 / Card title</div><code>20</code></div>
+              <div class="type-row"><span>Body</span><div class="type-sample" style="font-size:16px">16 / Default reading</div><code>16</code></div>
+              <div class="type-row"><span>Small</span><div class="type-sample" style="font-size:14px">14 / Secondary text</div><code>14</code></div>
+              <div class="type-row"><span>Meta</span><div class="type-sample" style="font-size:12px">12 / Labels, timestamps</div><code>12</code></div>
+            </div>
+            <p class="token-note">DM Serif Display for editorial headlines only. DM Sans for navigation, controls, data, and body copy. Minimum 12 px; do not use display type for clinical details.</p>
+          </div>
+          <div class="token-block">
+            <h3>Shape &amp; elevation</h3>
+            <div class="shape-row">
+              <div><div class="shape" style="border-radius:4px"></div><div class="shape-label">4 / inputs</div></div>
+              <div><div class="shape" style="border-radius:8px"></div><div class="shape-label">8 / panels</div></div>
+              <div><div class="shape" style="border-radius:16px"></div><div class="shape-label">16 / feature</div></div>
+              <div><div class="shape" style="border-radius:999px"></div><div class="shape-label">Pill / status</div></div>
+            </div>
+            <div class="shadow-demo" style="margin-top:15px"><span>Paper / 0 1px 2px + 0 8px 24px</span><span>Float / 0 8px 24px + 0 2px 6px</span></div>
+            <p class="token-note">Use paper shadow for a single raised surface. Reserve float shadow for menus and dialogs. Prefer borders and spacing over nested cards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens">
+      <div class="section-head">
+        <div><p class="eyebrow">04 / Sketch</p><h2>Key screens</h2></div>
+        <p>Low-fidelity mobile-first layouts. Structure and priority only; no finished UI or assumed feature behavior.</p>
+      </div>
+      <div class="screen-grid">
+        <article class="screen-card">
+          <div class="screen-heading"><h3>Landing</h3><span>01</span></div>
+          <div class="screen-frame landing"><div class="mini-top"><span class="mini-brand">FIELDNOTE</span><span>How it works &nbsp; Sign in</span></div><div class="mini-title">Care, kept<br>close.</div><p class="mini-sub">Keep the little details of family health in one thoughtful place.</p><div class="mini-art"></div><div class="mini-button">Make room for what matters</div><p class="mini-label" style="text-align:center">Private by design / Made for your whole care circle</p></div>
+          <p class="screen-caption"><strong>Job:</strong> establish trust and invite one clear next step. Lead with the journal, not a medical claim.</p>
+        </article>
+        <article class="screen-card">
+          <div class="screen-heading"><h3>Login</h3><span>02</span></div>
+          <div class="screen-frame"><div class="mini-top"><span class="mini-brand">FIELDNOTE</span><span>Help</span></div><div class="mini-title">Welcome back.</div><p class="mini-sub">Your family's notes are here when you need them.</p><div class="mini-label">Email address</div><div class="mini-input">name@example.com</div><div class="mini-label">Password</div><div class="mini-input">••••••••••••</div><div class="mini-button">Sign in</div><div class="mini-label" style="text-align:center">Forgot password?</div><div class="mini-rule"><span>New to Fieldnote?</span><strong style="color:var(--fern)">Create an account</strong></div><p class="mini-label">A small privacy note, near the action.</p></div>
+          <p class="screen-caption"><strong>Job:</strong> get returning caregivers to their records quickly and reinforce privacy without friction.</p>
+        </article>
+        <article class="screen-card">
+          <div class="screen-heading"><h3>Home</h3><span>03</span></div>
+          <div class="screen-frame"><div class="mini-top"><span class="mini-brand">FIELDNOTE</span><span>Today &nbsp; ◯</span></div><div class="mini-title">Good morning,<br>Riya.</div><p class="mini-sub">A clear place to start today.</p><div class="mini-rule"><strong>Family</strong><span class="mini-tag">3 people</span></div><div class="mini-person"><div class="mini-avatar">M</div><div><strong>Maya</strong><small>Next appointment / Thu</small></div><span>›</span></div><div class="mini-rule"><strong>Recent note</strong><span class="mini-tag blue">Yesterday</span></div><p class="mini-sub" style="margin:6px 0">Sleep was better after the new routine.</p><div class="mini-button secondary">+ &nbsp; Add a note</div><div class="mini-nav"><b>Home</b><span>Timeline</span><span>Family</span><span>More</span></div></div>
+          <p class="screen-caption"><strong>Job:</strong> orient the caregiver, surface one timely item, keep add-note close at hand.</p>
+        </article>
+        <article class="screen-card">
+          <div class="screen-heading"><h3>Timeline</h3><span>04</span></div>
+          <div class="screen-frame"><div class="mini-top"><span class="mini-brand">TIMELINE</span><span>Filter ▾</span></div><div class="mini-title">Maya's story</div><p class="mini-sub">Notes shared by her care circle.</p><div class="mini-rule"><strong>October 2026</strong><span class="mini-tag blue">This month</span></div><div class="mini-rule"><span class="mini-tag yellow">Today</span><strong>Medication updated</strong></div><p class="mini-sub" style="margin:4px 0 8px">Dose note added by Riya. View details.</p><div class="mini-rule"><span class="mini-tag">Sep 26</span><strong>Clinic visit</strong></div><p class="mini-sub" style="margin:4px 0 8px">Visit summary and next steps.</p><div class="mini-rule"><span class="mini-tag blue">Sep 21</span><strong>Sleep note</strong></div><div class="mini-button secondary">+ &nbsp; Add to timeline</div><div class="mini-nav"><span>Home</span><b>Timeline</b><span>Family</span><span>More</span></div></div>
+          <p class="screen-caption"><strong>Job:</strong> make who, when, and what changed scannable; filters never hide the date context.</p>
+        </article>
+        <article class="screen-card">
+          <div class="screen-heading"><h3>Family</h3><span>05</span></div>
+          <div class="screen-frame"><div class="mini-top"><span class="mini-brand">FAMILY</span><span>Manage</span></div><div class="mini-title">Your care circle</div><p class="mini-sub">People and the details that help you care for them.</p><div class="mini-person"><div class="mini-avatar">M</div><div><strong>Maya</strong><small>Child / Profile &amp; records</small></div><span>›</span></div><div class="mini-person"><div class="mini-avatar" style="background:var(--lake-wash);color:var(--lake)">A</div><div><strong>Arun</strong><small>Partner / Profile &amp; records</small></div><span>›</span></div><div class="mini-person"><div class="mini-avatar" style="background:var(--citrus-wash);color:#725a16">R</div><div><strong>Riya</strong><small>You / Profile &amp; records</small></div><span>›</span></div><div class="mini-button secondary">+ &nbsp; Add a family member</div><div class="mini-nav"><span>Home</span><span>Timeline</span><b>Family</b><span>More</span></div></div>
+          <p class="screen-caption"><strong>Job:</strong> make each person's record distinct and ownership / sharing understandable.</p>
+        </article>
+        <article class="screen-card">
+          <div class="screen-heading"><h3>Diet</h3><span>06</span></div>
+          <div class="screen-frame"><div class="mini-top"><span class="mini-brand">FOOD NOTES</span><span>Maya ▾</span></div><div class="mini-title">A pattern, not a score.</div><p class="mini-sub">Notice what feels useful. No calories, streaks, or good / bad labels.</p><div class="mini-rule"><strong>This week</strong><span class="mini-tag">Add a note</span></div><div class="mini-chart"><i style="height:38%"></i><i style="height:66%"></i><i style="height:48%"></i><i style="height:79%"></i><i style="height:56%"></i><i style="height:90%"></i><i style="height:61%"></i></div><p class="mini-label">Meals and observations / optional</p><div class="mini-rule"><span>Today / Lunch</span><strong>Rice, lentils</strong></div><div class="mini-rule"><span>Yesterday / Note</span><strong>More energy</strong></div><div class="mini-nav"><span>Home</span><span>Timeline</span><span>Family</span><b>Diet</b></div></div>
+          <p class="screen-caption"><strong>Job:</strong> support neutral observation and personal context. The chart is a placeholder for a user-defined trend, not nutrition scoring.</p>
+        </article>
+        <article class="screen-card">
+          <div class="screen-heading"><h3>SOS</h3><span>07</span></div>
+          <div class="screen-frame"><div class="mini-top"><span class="mini-brand">URGENT HELP</span><span>Close</span></div><div class="mini-title" style="text-align:center">What do you<br>need right now?</div><div class="mini-sos">Call emergency<br>services</div><div class="mini-button" style="background:var(--coral)">Call local emergency number</div><div class="mini-rule"><strong>Call my chosen contact</strong><span>›</span></div><div class="mini-rule"><strong>Open Maya's key health info</strong><span>›</span></div><div class="mini-alert"><strong>!</strong><span>If someone is in immediate danger, call your local emergency number.</span></div><p class="mini-label" style="text-align:center">No account setup needed to reach emergency guidance.</p></div>
+          <p class="screen-caption"><strong>Job:</strong> reduce decisions under stress. Confirm local emergency behavior and contacts before implementation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="art-direction">
+      <div class="section-head">
+        <div><p class="eyebrow">05 / Make</p><h2>Icon &amp; illustration</h2></div>
+        <p>One coherent visual language, with a separate and unmistakable convention for urgent help.</p>
+      </div>
+      <div class="system-grid">
+        <div class="system-panel">
+          <h3>Icons / Lucide outline</h3>
+          <p>Use Lucide's familiar outline family: 24 px grid, 1.75 px stroke, rounded joins, no mixed filled / outline styles. Pair navigation icons with labels on primary destinations; icon-only controls need an accessible name and tooltip. Keep the SOS call action explicit and text-led.</p>
+          <div class="icon-samples" aria-hidden="true">
+            <div class="icon-chip"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7"></path><path d="M5 9v11h14V9"></path><path d="M9 20v-7h6v7"></path></svg></div>
+            <div class="icon-chip"><svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18"></path><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="m9 16 2 2 4-4"></path></svg></div>
+            <div class="icon-chip"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="10" cy="7" r="4"></circle><path d="M20 8v6M23 11h-6"></path></svg></div>
+            <div class="icon-chip urgent"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"></path><path d="M10.3 3.9 1.8 18.2A2 2 0 0 0 3.5 21h17a2 2 0 0 0 1.7-2.8L13.7 3.9a2 2 0 0 0-3.4 0Z"></path></svg></div>
+          </div>
+          <p class="token-note">Sketches are conceptual glyphs; use the Lucide package's official icons in the product.</p>
+        </div>
+        <div class="system-panel">
+          <h3>Illustration / botanical field notes</h3>
+          <p>Commissioned spot drawings with a loose pen-and-wash edge: leaves, simple body-neutral objects, a cup, a bedside lamp, a folded note. Two inks plus one muted wash. Mostly open space, slight hand-made irregularity, no cute faces, floating blobs, or anatomical shorthand that could imply diagnosis.</p>
+          <ul><li>Use on landing, empty, and gentle onboarding states.</li><li>Keep records, charts, and urgent flows literal and unillustrated.</li><li>Prefer one clear spot image to decorative backgrounds; illustrations never carry instructions alone.</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="approval" role="note">
+      <div><h2>Direction proposed for approval</h2><p>Quiet editorial care, paper / ink / fern palette with lake and citrus support colors, coral reserved for SOS, DM Serif Display + DM Sans, 4 px spacing, restrained 4 / 8 / 16 px radii, and botanical field-note illustration. Approve or call out changes here before screen design starts.</p></div>
+      <span class="status">Awaiting your approval</span>
+    </div>
+  </main>
+  <footer class="shell">FIELDNOTE CARE / WORKING TITLE &nbsp; · &nbsp; DIRECTION 01 &nbsp; · &nbsp; 30 SEP 2026</footer>
+</body>
+</html>

@@ -1,0 +1,6 @@
+cd /d "C:\Users\ASUS\Desktop\backend"
+uv sync --all-groups
+npm --prefix frontend ci
+npm --prefix frontend run build
+uv run alembic upgrade head
+uv run uvicorn app.main:app --host 127.0.0.1 --port 8000

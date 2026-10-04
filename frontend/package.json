@@ -1,0 +1,20 @@
+{
+  "name": "fieldnote-care-local-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test",
+    "build": "node build.mjs",
+    "test:e2e": "npm run build && playwright test"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "esbuild": "^0.28.2"
+  }
+}

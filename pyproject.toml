@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "backend-api"
+version = "0.1.0"
+description = "A clean foundation for a FastAPI backend."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "alembic>=1.14,<2",
+    "fastapi>=0.115,<1",
+    "pwdlib[argon2]>=0.2,<1",
+    "email-validator>=2.2,<3",
+    "cryptography>=50,<51",
+    "celery[redis]>=5.4,<6",
+    "python-multipart>=0.0.20,<1",
+    "psycopg[binary]>=3.2,<4",
+    "pydantic-settings>=2.7,<3",
+    "sqlalchemy>=2.0,<3",
+    "uvicorn[standard]>=0.34,<1",
+    "reportlab>=4.2,<5",
+]
+
+[project.scripts]
+backend-seed = "app.db.seed:main"
+backend-seed-demo = "app.db.seed_demo:main"
+backend-rotate-keys = "app.security.key_rotation:main"
+backend-purge-deleted = "app.tasks:purge_main"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28,<1",
+    "pip-audit>=2.7,<3",
+    "pre-commit>=4.1,<5",
+    "pytest>=9.0.3,<10",
+    "pytest-cov>=6,<8",
+    "ruff>=0.9,<1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/app"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".venv-*"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

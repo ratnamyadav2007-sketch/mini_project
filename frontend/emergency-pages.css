@@ -1,0 +1,135 @@
+.safety-panel { min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); box-shadow: var(--shadow-paper); }
+.safety-panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 12px; }
+.safety-panel-heading h2 { margin: 0 0 3px; font-size: var(--type-16); }
+.safety-panel-heading p { margin: 0; color: var(--ink-muted); font-size: var(--type-12); }
+.emergency-contact-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(250px, .8fr); align-items: start; gap: 16px; }
+.emergency-contact-list { display: grid; padding: 0; margin: 0; list-style: none; }
+.emergency-contact-row { min-height: 58px; display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line); }
+.emergency-contact-row:first-child { border-top: 0; }
+.contact-priority { width: 20px; flex: 0 0 auto; color: var(--ink-muted); font-size: var(--type-12); font-weight: 700; text-align: center; }
+.contact-avatar { width: 35px; height: 35px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; background: var(--fern-wash); color: var(--fern); font-family: var(--font-display); font-size: var(--type-14); }
+.contact-identity { min-width: 0; flex: 1; }
+.contact-identity strong, .contact-identity small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.contact-identity strong { font-size: var(--type-14); }
+.contact-identity small { margin-top: 2px; color: var(--ink-muted); font-size: var(--type-12); }
+.contact-call, .sos-call-link { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 6px 9px; border: 1px solid #d3a79e; border-radius: var(--radius-sm); background: var(--coral-wash); color: #84382d; font-size: var(--type-12); font-weight: 700; text-decoration: none; }
+.contact-call .icon, .sos-call-link .icon { width: 17px; height: 17px; }
+.contact-actions { display: flex; gap: 1px; }
+.contact-actions .icon-button { width: 32px; height: 32px; }
+.contact-actions .icon-button .icon { width: 15px; height: 15px; }
+.contact-actions .contact-remove:hover { color: var(--coral); }
+.contact-actions button:disabled { opacity: .35; cursor: not-allowed; }
+.contact-empty { padding: 13px 0; color: var(--ink-muted); font-size: var(--type-14); }
+.contact-form { gap: 12px; }
+.contact-form .health-field label { font-size: var(--type-12); }
+.contact-form .health-input { min-height: 39px; font-size: var(--type-14); }
+.contact-form .health-error:empty { display: none; }
+.contact-form [type="submit"] { justify-self: start; }
+
+.sos-demo-panel { display: grid; justify-items: center; padding: 24px 18px; margin: 18px 0; border: 1px solid #d1aaa2; border-radius: var(--radius-md); background: #fffdfa; text-align: center; }
+.sos-hold-button { width: min(100%, 360px); min-height: 68px; display: flex; align-items: center; justify-content: center; gap: 11px; padding: 14px 18px; border: 2px solid #92392d; border-radius: var(--radius-md); background: var(--coral); color: #fffefa; font: inherit; font-size: var(--type-16); font-weight: 700; touch-action: none; user-select: none; -webkit-user-select: none; transition: background var(--motion-fast), box-shadow var(--motion-fast), transform var(--motion-fast); }
+.sos-hold-button:hover, .sos-hold-button.is-holding { background: #963b2e; box-shadow: 0 0 0 4px var(--coral-wash); }
+.sos-hold-button.is-holding { transform: scale(.99); }
+.sos-hold-button .icon { width: 22px; height: 22px; }
+.sos-demo-panel > p { max-width: 520px; margin: 11px auto 0; color: var(--ink-soft); font-size: var(--type-12); }
+.sos-live-status { min-height: 42px; display: grid; align-content: center; gap: 4px; padding: 11px 12px; margin-top: 13px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper); color: var(--ink-soft); font-size: var(--type-14); }
+.sos-live-status.cancelled { border-color: #97b19d; background: var(--fern-wash); color: #214430; }
+.sos-live-status.delivered { border-color: #d2a69d; background: var(--coral-wash); color: #713329; }
+.sos-live-status.warning, .sos-live-status.error { border-color: #b88432; background: #fff4d9; color: #61440e; }
+.sos-countdown-number { width: 86px; height: 86px; display: grid; place-items: center; border: 5px solid var(--coral); border-radius: 50%; background: var(--coral-wash); color: #713329; font-family: var(--font-display); font-size: 40px; }
+.sos-countdown-copy { font-size: var(--type-16) !important; font-weight: 700; }
+.sos-demo-panel .button.danger { min-height: 44px; padding: 8px 20px; border: 1px solid #92392d; border-radius: var(--radius-sm); background: var(--coral); color: white; font: inherit; font-weight: 700; }
+.sos-demo-panel .button.danger:hover { background: #963b2e; }
+.sos-panel { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
+.sos-contact-list { display: grid; padding: 0; margin: 0; list-style: none; }
+.sos-contact-row { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 8px 0; border-top: 1px solid var(--line); }
+.sos-contact-rank { width: 21px; color: var(--ink-muted); font-size: var(--type-12); font-weight: 700; text-align: center; }
+.sos-contact-row > span:nth-child(2) { min-width: 0; flex: 1; }
+.sos-contact-row strong, .sos-contact-row small { display: block; }
+.sos-contact-row strong { font-size: var(--type-14); }
+.sos-contact-row small { margin-top: 2px; color: var(--ink-muted); font-size: var(--type-12); }
+.sos-card-link { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 0; margin-top: 10px; border-bottom: 1px solid var(--line); }
+.sos-card-link strong, .sos-card-link small { display: block; }
+.sos-card-link strong { font-size: var(--type-14); }
+.sos-card-link small { margin-top: 3px; color: var(--ink-muted); font-size: var(--type-12); }
+.sos-card-link .icon { width: 16px; height: 16px; vertical-align: middle; }
+.sos-target-profile { display: flex; align-items: center; gap: 10px; padding-top: 13px; }
+.sos-target-profile label { color: var(--ink-muted); font-size: var(--type-12); }
+.sos-target-profile select { width: auto; min-width: 140px; min-height: 36px; font-size: var(--type-12); }
+
+.appointments-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 9px; margin: 0 0 15px; }
+.calendar-profile { display: grid; gap: 1px; margin-right: auto; }
+.calendar-profile .page-kicker { margin: 0; font-size: 10px; }
+.calendar-profile strong { font-size: var(--type-14); }
+.calendar-view-switch { display: flex; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--paper); }
+.calendar-view-switch .zoom-button { min-height: 31px; padding: 5px 10px; }
+.appointments-toolbar > .secondary-action { min-height: 39px; font-size: var(--type-12); }
+.appointments-toolbar .icon { width: 15px; height: 15px; }
+.calendar-panel { padding: 13px; }
+.calendar-heading { display: grid; grid-template-columns: 38px 1fr 38px auto; align-items: center; gap: 8px; margin-bottom: 11px; }
+.calendar-heading h2 { margin: 0; font-family: var(--font-display); font-size: var(--type-20); font-weight: 400; text-align: center; }
+.calendar-heading .secondary-action { min-height: 34px; padding: 5px 9px; font-size: var(--type-12); }
+.calendar-weekdays, .calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.calendar-weekdays { border: 1px solid var(--line); border-bottom: 0; background: var(--paper-deep); }
+.calendar-weekdays span { padding: 7px 3px; color: var(--ink-soft); font-size: 10px; font-weight: 700; text-align: center; }
+.calendar-grid { border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.calendar-day { min-width: 0; min-height: 82px; display: flex; flex-direction: column; align-items: stretch; gap: 3px; padding: 5px; overflow: hidden; border: 0; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); color: var(--ink); text-align: left; }
+.calendar-day:hover { background: var(--fern-wash); }
+.calendar-day.outside-month { background: #f5f4ef; color: #888e88; }
+.calendar-day.today .calendar-day-number { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: var(--fern); color: white; }
+.calendar-day-number { align-self: flex-start; font-size: 11px; font-weight: 600; }
+.calendar-event { display: block; padding: 3px 4px; overflow: hidden; border-left: 2px solid var(--citrus); background: var(--citrus-wash); color: #5c4917; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.calendar-more { color: var(--ink-muted); font-size: 9px; }
+.week-grid .calendar-day { min-height: 155px; }
+.appointment-list-panel { margin-top: 14px; }
+.appointment-list { display: grid; padding: 0; margin: 0; list-style: none; }
+.appointment-row { display: grid; grid-template-columns: minmax(140px, .6fr) minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid var(--line); }
+.appointment-row:first-child { border-top: 0; }
+.appointment-when { display: grid; gap: 5px; }
+.appointment-when time { font-size: var(--type-12); font-weight: 600; }
+.appointment-when .status-pill { justify-self: start; font-size: 10px; }
+.appointment-info { min-width: 0; }
+.appointment-info strong { display: block; font-size: var(--type-14); }
+.appointment-info small { display: block; margin-top: 3px; color: var(--ink-muted); font-size: var(--type-12); }
+.appointment-actions { display: flex; gap: 6px; }
+.appointment-actions .secondary-action { min-height: 34px; padding: 5px 8px; font-size: var(--type-12); }
+.appointment-create { margin-top: 14px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
+.appointment-create summary { display: flex; align-items: center; gap: 8px; padding: 14px; color: var(--fern); font-size: var(--type-14); font-weight: 700; cursor: pointer; }
+.appointment-create summary .icon { width: 17px; height: 17px; }
+.appointment-form { padding: 0 14px 15px; }
+.appointment-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.appointment-form .health-field label { font-size: var(--type-12); }
+.appointment-form .health-input { min-height: 39px; font-size: var(--type-14); }
+.appointment-form .health-error:empty { display: none; }
+
+@media (max-width: 720px) {
+  .emergency-contact-layout { grid-template-columns: minmax(0, 1fr); }
+  .sos-demo-panel { padding: 18px 12px; }
+  .appointments-toolbar { justify-content: flex-start; }
+  .calendar-profile { flex: 1 1 100%; }
+  .calendar-day { min-height: 65px; padding: 3px; }
+  .calendar-event { padding: 2px; font-size: 8px; }
+  .week-grid .calendar-day { min-height: 110px; }
+  .appointment-row { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+  .appointment-when { grid-column: 1; }
+  .appointment-info { grid-column: 1; grid-row: 2; }
+  .appointment-actions { grid-column: 2; grid-row: 1 / span 2; flex-direction: column; }
+  .appointment-form-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 390px) {
+  .emergency-contact-row { gap: 6px; }
+  .contact-actions .icon-button { width: 28px; height: 30px; }
+  .contact-call { padding: 5px; }
+  .contact-call .icon { width: 16px; height: 16px; }
+  .calendar-heading { grid-template-columns: 32px 1fr 32px auto; gap: 4px; }
+  .calendar-heading .icon-button { width: 30px; height: 32px; }
+  .calendar-day { min-height: 54px; }
+  .calendar-day-number { font-size: 10px; }
+  .calendar-event { max-height: 16px; }
+  .calendar-view-switch .zoom-button { padding: 4px 7px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sos-hold-button.is-holding { transform: none; }
+}

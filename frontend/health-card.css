@@ -1,0 +1,50 @@
+* { box-sizing: border-box; }
+:root { color-scheme: light; font-family: "DM Sans", "Helvetica Neue", sans-serif; color: #111; background: #f0f0ec; }
+body { min-width: 280px; margin: 0; background: #f0f0ec; font-family: inherit; }
+.card-page { width: min(100% - 32px, 760px); margin: 0 auto; padding: 20px 0 36px; }
+.card-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 15px; }
+.card-brand { color: #183c2b; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-decoration: none; }
+.print-button { min-height: 40px; padding: 8px 13px; border: 2px solid #18231d; border-radius: 4px; background: white; color: #111; font: inherit; font-size: 14px; font-weight: 700; }
+.print-button:focus-visible, a:focus-visible { outline: 3px solid #155eaa; outline-offset: 2px; }
+.card-status { padding: 20px; color: #222; font-size: 16px; }
+.card-status[hidden] { display: none; }
+.emergency-card { border: 2px solid #101510; background: white; color: #111; }
+.emergency-card[hidden] { display: none; }
+.card-topline { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 18px; background: #173c2b; color: white; font-size: 12px; font-weight: 700; letter-spacing: .09em; }
+h1 { margin: 0; padding: 22px 20px 5px; font-family: Georgia, serif; font-size: 36px; line-height: 1.08; overflow-wrap: anywhere; }
+.card-updated { padding: 0 20px; margin: 0; color: #343a36; font-size: 12px; }
+.card-critical { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 20px 0; background: #121812; border-block: 1px solid #121812; }
+.card-fact { min-height: 86px; display: grid; align-content: center; gap: 6px; padding: 13px 20px; background: #e8eee9; }
+.card-fact span, .card-section h2 { font-size: 11px; font-weight: 800; letter-spacing: .09em; }
+.card-fact strong { font-size: 22px; line-height: 1.2; overflow-wrap: anywhere; }
+.card-section { padding: 14px 20px; border-bottom: 1px solid #959b95; }
+.card-section h2 { margin: 0 0 8px; }
+.card-section p { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.card-section ul, .card-contact-list { display: grid; gap: 8px; padding-left: 22px; margin: 0; }
+.card-section li { padding-left: 3px; font-size: 16px; line-height: 1.4; }
+.card-contact-list li { padding: 0 0 8px 3px; }
+.contact-name { display: block; font-weight: 700; }
+.contact-phone { display: block; color: #111; font-size: 18px; font-weight: 700; text-decoration: none; }
+.contact-meta { display: block; margin-top: 2px; color: #333; font-size: 13px; }
+.card-footer { display: flex; align-items: center; gap: 15px; padding: 15px 20px; }
+.card-footer img { width: 96px; height: 96px; image-rendering: pixelated; }
+.card-footer p { margin: 0; color: #333; font-size: 12px; line-height: 1.5; }
+.card-offline-note { max-width: 650px; margin: 14px 2px 0; color: #333; font-size: 12px; line-height: 1.5; }
+#card-no-contacts { margin: 0; color: #333; font-size: 14px; }
+#card-no-contacts[hidden] { display: none; }
+@media (max-width: 480px) {
+  .card-page { width: calc(100% - 20px); padding-top: 10px; }
+  .card-topline { padding: 11px 12px; font-size: 10px; }
+  h1 { padding: 18px 13px 5px; font-size: 30px; }
+  .card-updated { padding: 0 13px; }
+  .card-fact { padding: 11px 13px; }
+  .card-section { padding: 13px; }
+  .card-footer { padding: 13px; }
+}
+@media print {
+  :root, body { background: white; }
+  .card-page { width: 100%; padding: 0; }
+  .card-header, .card-status, .card-offline-note, .print-button { display: none !important; }
+  .emergency-card { border: 2px solid #000; break-inside: avoid; }
+  .card-topline { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}

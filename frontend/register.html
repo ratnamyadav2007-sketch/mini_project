@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Create account | Fieldnote Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="/js/ui.css">
+  <script type="module" src="/js/bootstrap.js"></script>
+  <script type="module" src="/auth.js"></script>
+</head>
+<body class="auth-site" data-auth-page="register">
+  <header class="site-nav"><a class="site-brand" href="/landing.html"><span class="brand-monogram">f</span> Fieldnote Care</a><nav class="nav-actions" aria-label="Main navigation"><a href="/landing.html">About</a><a href="/login.html">Sign in</a></nav></header>
+  <main class="auth-layout">
+    <section class="auth-story"><div><p class="eyebrow">Start with what matters</p><h1>A little more room to notice.</h1><p>Create a private local account for your family's care notes.</p></div><p class="auth-story-note">Use an email you can access, and keep your recovery codes somewhere safe.</p></section>
+    <section class="auth-content" aria-labelledby="form-title">
+      <header class="auth-heading"><p class="eyebrow">Create account / localhost only</p><h2 id="form-title">Make your care space.</h2><p>Just an email address and a strong, unique password.</p></header>
+      <form class="auth-form" data-auth-form novalidate>
+        <div class="auth-field"><label for="display-name">Your name</label><input class="auth-input" id="display-name" name="display_name" type="text" autocomplete="name" maxlength="120" required aria-describedby="display-name-error"><p class="field-error" id="display-name-error" hidden></p></div>
+        <div class="auth-field"><label for="email">Email address</label><input class="auth-input" id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-error"><p class="field-error" id="email-error" hidden></p></div>
+        <div class="auth-field"><label for="password">Create password</label><div class="auth-input-wrap"><input class="auth-input password-input" id="password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required aria-describedby="password-help password-error"><button class="password-toggle" type="button" data-toggle-password="password" aria-label="Show password">Show</button></div><p class="field-help" id="password-help">At least 12 characters. A long passphrase is easier to remember.</p><div class="password-meter"><div class="meter-track" data-password-meter data-level="0" role="meter" aria-label="Password strength" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" aria-valuetext="Not entered"><span></span><span></span><span></span><span></span></div><span class="meter-copy" data-password-copy>Strength appears as you type.</span></div><p class="field-error" id="password-error" hidden></p></div>
+        <p class="form-message" id="form-message" role="alert" aria-live="polite"></p>
+        <button class="submit-button" type="submit">Create local account</button>
+      </form>
+      <section class="recovery-panel" id="recovery-panel" aria-live="polite" hidden><h3>Keep this recovery code safe.</h3><p>This one-time code is shown only now. Fieldnote stores only its hash. Save it before continuing.</p><ol class="recovery-codes" id="recovery-codes"></ol><label class="recovery-confirm"><input id="recovery-saved" type="checkbox"> I saved my recovery code somewhere private.</label><p class="form-message" id="recovery-message" role="status" aria-live="polite"></p><div class="cta-row"><button class="secondary-link" type="button" data-copy-recovery>Copy code</button><button class="submit-button" type="button" data-confirm-recovery disabled>I've saved it / Continue</button></div></section>
+      <p class="local-only-note">This development account is stored on this computer and is not connected to email or cloud services.</p>
+      <div class="auth-links" style="margin-top:17px"><span>Already have an account?</span><a href="/login.html">Sign in</a></div>
+      <p class="auth-assurance"><svg class="icon" aria-hidden="true"><use href="icons.svg#shield-check"></use></svg><span>Your password is salted and hashed by the local service. Never reuse a password from another account.</span></p>
+    </section>
+  </main>
+</body>
+</html>

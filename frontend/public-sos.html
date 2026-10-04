@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Time-limited emergency health card">
+  <title>Emergency health card | Fieldnote Care</title>
+  <link rel="stylesheet" href="health-card.css">
+  <script src="public-sos.js" defer></script>
+</head>
+<body class="card-body">
+  <main class="card-page" aria-live="polite">
+    <header class="card-header"><span class="card-brand">FIELDNOTE CARE / EMERGENCY CARD</span><button type="button" class="print-button" id="print-card">Print card</button></header>
+    <div class="card-status" id="card-status" role="status">Loading emergency card...</div>
+    <section class="emergency-card" id="emergency-card" hidden>
+      <div class="card-topline"><span>EMERGENCY HEALTH CARD</span><span>TIME-LIMITED LINK</span></div>
+      <h1 id="card-name"></h1>
+      <div class="card-critical">
+        <div class="card-fact"><span>DATE OF BIRTH</span><strong id="card-birth"></strong></div>
+        <div class="card-fact"><span>BLOOD GROUP</span><strong id="card-blood"></strong></div>
+      </div>
+      <section class="card-section"><h2>ALLERGIES</h2><p id="card-allergies"></p></section>
+      <section class="card-section"><h2>HEALTH CONDITIONS</h2><p id="card-conditions"></p></section>
+      <section class="card-section" id="card-medications-section"><h2>MEDICATION NOTES</h2><ul id="card-medications"></ul></section>
+      <section class="card-section"><h2>EMERGENCY CONTACTS / PRIORITY ORDER</h2><ol class="card-contact-list" id="card-contacts"></ol><p id="card-no-contacts" hidden>No emergency contacts have been added.</p></section>
+      <footer class="card-footer"><p>Information may be incomplete. Confirm details with a clinician.</p></footer>
+    </section>
+  </main>
+</body>
+</html>

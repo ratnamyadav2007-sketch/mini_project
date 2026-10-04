@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API client test | Fieldnote Care</title>
+  <link rel="stylesheet" href="/tokens.css">
+  <link rel="stylesheet" href="/js/ui.css">
+  <link rel="stylesheet" href="/js/api-client-test.css">
+  <script type="module" src="/js/bootstrap.js"></script>
+  <script type="module" src="/js/api-client-page.js"></script>
+</head>
+<body>
+  <main class="test-page">
+    <a href="/landing.html">← Fieldnote Care</a>
+    <header>
+      <p class="eyebrow">Developer tools</p>
+      <h1>API client check</h1>
+      <p>Verify the shared client, loading state, and global error responses.</p>
+      <p id="mode-status" class="mode-status" role="status"></p>
+    </header>
+    <section class="test-card" aria-labelledby="health-title">
+      <h2 id="health-title">Health endpoint</h2>
+      <div class="button-row">
+        <button type="button" data-run="health">Call health endpoint</button>
+        <button type="button" data-run="loading">Show loading state</button>
+        <button type="button" data-run="fields">Map form field errors</button>
+      </div>
+      <div id="health-result" class="result" aria-live="polite"></div>
+    </section>
+    <section class="test-card" aria-labelledby="errors-title">
+      <h2 id="errors-title">Global error handlers</h2>
+      <p>401 redirects to login and stores this page as <code>returnTo</code>.</p>
+      <div class="button-row">
+        <button type="button" data-run="401">Trigger 401 / login redirect</button>
+        <button type="button" data-run="403">Trigger 403 / access notice</button>
+        <button type="button" data-run="429">Trigger 429 / slow-down notice</button>
+        <button type="button" data-run="offline">Trigger network failure</button>
+      </div>
+    </section>
+    <section class="test-card">
+      <h2>Field error mapper</h2>
+      <form id="field-error-form">
+        <label>Email <input name="email" type="email" aria-describedby="email-error"></label>
+        <p id="email-error" class="field-error" hidden></p>
+        <label>Display name <input name="display_name" type="text"></label>
+        <button type="submit">Clear sample field errors</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="A thoughtful local-first place to keep family health notes, care details, and the small moments between appointments.">
+  <title>Fieldnote Care | Care, kept close</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="/js/ui.css">
+  <script type="module" src="/js/bootstrap.js"></script>
+</head>
+<body class="auth-site">
+  <header class="site-nav">
+    <a class="site-brand" href="/landing.html"><span class="brand-monogram">f</span> Fieldnote Care</a>
+    <nav class="nav-actions" aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="/login.html">Sign in</a><a class="primary-link" href="/register.html">Create an account</a></nav>
+  </header>
+
+  <main>
+    <section class="landing-hero">
+      <p class="eyebrow">A family health journal</p>
+      <h1 class="landing-title">Care, kept close.</h1>
+      <p class="landing-copy">The little details matter: a change in routine, a question for the next visit, the note someone else needs to see. Keep them together, with your family.</p>
+      <div class="cta-row"><a class="primary-link" href="/register.html">Make a little room <svg class="icon" aria-hidden="true"><use href="icons.svg#arrow-right"></use></svg></a><a class="secondary-link" href="#how-it-works">See how it works</a></div>
+      <div class="storyline" aria-label="Notice a detail, keep it with your family, bring a clearer picture to care">
+        <div class="story-stop"><span>Notice</span><strong>The everyday detail</strong><p>A small change is worth remembering.</p></div>
+        <div class="story-stop"><span>Keep</span><strong>The note, together</strong><p>Give your care circle a shared place.</p></div>
+        <div class="story-stop"><span>Bring</span><strong>A fuller picture</strong><p>Carry useful context into a care visit.</p></div>
+      </div>
+    </section>
+
+    <section class="page-band" aria-labelledby="product-title">
+      <div class="band-inner">
+        <div class="band-heading"><p class="eyebrow">A look inside</p><h2 id="product-title">Your family's care, in one thoughtful view.</h2><p>Real previews from the Fieldnote interface. Switch between home and timeline to see the same family details from two angles.</p></div>
+        <div class="preview-grid">
+          <figure class="preview-figure"><figcaption><strong>Home / a clear place to start</strong><span>Product preview</span></figcaption><iframe class="preview-frame" src="/app-shell.html?preview=1#/home" title="Live preview of the Fieldnote family home" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe></figure>
+          <figure class="preview-figure"><figcaption><strong>Timeline / the details over time</strong><span>Product preview</span></figcaption><iframe class="preview-frame" src="/app-shell.html?preview=1#/timeline" title="Live preview of the Fieldnote family timeline" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe></figure>
+        </div>
+        <p class="preview-note">These previews use sample information and are not connected to an account.</p>
+      </div>
+    </section>
+
+    <section class="privacy-band" aria-labelledby="privacy-title">
+      <div class="band-inner">
+        <div class="band-heading"><p class="eyebrow">Privacy, by design</p><h2 id="privacy-title">Your health notes deserve a quiet place.</h2><p>This prototype runs on your computer. It does not send your account or notes to a hosted service.</p></div>
+        <div class="privacy-grid">
+          <article class="privacy-item"><svg class="icon" aria-hidden="true"><use href="icons.svg#lock"></use></svg><h3>Local to this computer</h3><p>The development server binds to loopback. Other devices cannot sign in to this prototype.</p></article>
+          <article class="privacy-item"><svg class="icon" aria-hidden="true"><use href="icons.svg#shield-check"></use></svg><h3>Passwords are hashed</h3><p>The local service stores a salted scrypt hash, not your readable password.</p></article>
+          <article class="privacy-item"><svg class="icon" aria-hidden="true"><use href="icons.svg#lock"></use></svg><h3>Recovery stays with you</h3><p>One-time recovery codes are shown once. Only their hashes are kept by the local service.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-band" id="how-it-works" aria-labelledby="steps-title">
+      <div class="band-inner">
+        <div class="band-heading"><p class="eyebrow">How it works</p><h2 id="steps-title">A little easier to remember. A little easier to share.</h2></div>
+        <div class="steps-grid">
+          <article class="step"><span class="step-number">01</span><h3>Start with a note</h3><p>Save an observation or an appointment detail in plain language.</p></article>
+          <article class="step"><span class="step-number">02</span><h3>Choose your circle</h3><p>Keep family context in one place, ready for the people you trust.</p></article>
+          <article class="step"><span class="step-number">03</span><h3>Bring what helps</h3><p>Return to the timeline when a question comes up or a visit is near.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-band" style="padding-top:0" aria-label="Create an account">
+      <div class="band-inner final-callout"><h2>Keep the details that matter.</h2><a class="primary-link" href="/register.html">Create your local account <svg class="icon" aria-hidden="true"><use href="icons.svg#arrow-right"></use></svg></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>Fieldnote Care / A local prototype</span><span><a href="/login.html">Sign in</a> &nbsp; / &nbsp; <a href="/reset.html">Reset with a recovery code</a></span></footer>
+</body>
+</html>

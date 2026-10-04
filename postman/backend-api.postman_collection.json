@@ -1,0 +1,166 @@
+{
+  "info": {
+    "_postman_id": "f010bd00-40ac-4a88-a530-019ac7fa0c31",
+    "name": "Health Records Backend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Local API smoke and data-rights flows. Obtain the CSRF challenge before login; cookies are stored by Postman."
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://127.0.0.1:8000" },
+    { "key": "email", "value": "demo.owner@example.com" },
+    { "key": "password", "value": "Set-DEMO_PASSWORD-here" },
+    { "key": "csrfToken", "value": "" },
+    { "key": "profileId", "value": "" },
+    { "key": "deleteAccount", "value": "false" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/health"
+      }
+    },
+    {
+      "name": "Get CSRF challenge",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.collectionVariables.set('csrfToken', pm.response.json().csrf_token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/auth/csrf"
+      }
+    },
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.collectionVariables.set('csrfToken', pm.response.json().csrf_token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "X-CSRF-Token", "value": "{{csrfToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+        },
+        "url": "{{baseUrl}}/api/v1/auth/login"
+      }
+    },
+    {
+      "name": "Current user",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/auth/me"
+      }
+    },
+    {
+      "name": "List profiles",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const own = pm.response.json().find(profile => profile.user_id);",
+              "if (own) pm.collectionVariables.set('profileId', own.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/profiles"
+      }
+    },
+    {
+      "name": "JSON export",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/profiles/{{profileId}}/export.json"
+      }
+    },
+    {
+      "name": "FHIR-style export",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/profiles/{{profileId}}/export.fhir"
+      }
+    },
+    {
+      "name": "PDF export",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/v1/profiles/{{profileId}}/export.pdf"
+      }
+    },
+    {
+      "name": "Logout",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.collectionVariables.get('deleteAccount') === 'true') pm.execution.skipRequest();"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "X-CSRF-Token", "value": "{{csrfToken}}" }
+        ],
+        "url": "{{baseUrl}}/api/v1/auth/logout"
+      }
+    },
+    {
+      "name": "Request account deletion (destructive)",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.collectionVariables.get('deleteAccount') !== 'true') pm.execution.skipRequest();"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "X-CSRF-Token", "value": "{{csrfToken}}" }
+        ],
+        "url": "{{baseUrl}}/api/v1/auth/account",
+        "description": "Schedules account purge after 30 days. Use only with a disposable demo account."
+      }
+    }
+  ]
+}

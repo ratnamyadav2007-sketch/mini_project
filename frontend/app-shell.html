@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Fieldnote Care | Family home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="app-shell.css">
+  <link rel="stylesheet" href="health-pages.css">
+  <link rel="stylesheet" href="emergency-pages.css">
+  <link rel="stylesheet" href="wellness-pages.css">
+  <link rel="stylesheet" href="/js/ui.css">
+  <script type="module" src="app-loader.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail" aria-label="Primary navigation">
+      <a class="shell-brand" href="#/home"><span class="shell-mark">f</span> Fieldnote Care</a>
+      <p class="rail-caption">A family health journal</p>
+      <p class="rail-label">Your space</p>
+      <nav class="primary-nav">
+        <a class="nav-link" href="#/home" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#home"></use></svg>Home</a>
+        <a class="nav-link" href="#/timeline" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#clock"></use></svg>Timeline</a>
+        <a class="nav-link" href="#/family" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#users"></use></svg>Family</a>
+        <a class="nav-link" href="#/appointments" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#calendar"></use></svg>Appointments</a>
+        <a class="nav-link" href="#/diet" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#apple"></use></svg>Diet</a>
+        <a class="nav-link" href="#/insights" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#activity"></use></svg>Insights</a>
+        <a class="nav-link" href="#/chat" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#clipboard"></use></svg>Wellness chat</a>
+      </nav>
+      <div class="rail-foot"><span>Care, kept close.</span><br><a href="#/settings" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#settings"></use></svg>Settings &amp; safety</a></div>
+    </aside>
+
+    <div class="shell-main">
+      <header class="shell-topbar">
+        <span class="topbar-note">A thoughtful place for family care</span>
+        <div class="topbar-actions">
+          <div class="member-control">
+            <button class="member-switcher" type="button" data-member-switcher aria-expanded="false" aria-controls="member-menu" aria-label="Switch family member">
+              <span class="avatar-cluster" id="member-cluster" aria-hidden="true"></span>
+              <span id="member-label">Riya</span>
+              <svg class="icon" aria-hidden="true"><use href="icons.svg#chevron-down"></use></svg>
+            </button>
+            <div class="popover" id="member-menu" data-popover hidden></div>
+          </div>
+          <div class="member-control">
+            <button class="icon-button" type="button" data-notifications aria-expanded="false" aria-controls="notification-menu" aria-label="Notifications">
+              <svg class="icon" aria-hidden="true"><use href="icons.svg#bell"></use></svg><span class="notification-badge" id="notification-badge" hidden>0</span>
+            </button>
+            <div class="popover" id="notification-menu" data-popover hidden>
+              <p class="popover-heading">Due reminders</p>
+              <div id="reminder-notices"><p class="notice-option">No due reminders.</p></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <nav aria-label="Breadcrumb"><ol class="breadcrumbs" id="breadcrumbs"></ol></nav>
+      <main class="route-content" id="route-content" tabindex="-1" aria-live="polite"></main>
+    </div>
+  </div>
+
+  <nav class="mobile-tabs" aria-label="Primary navigation">
+    <a class="mobile-tab" href="#/home" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#home"></use></svg><span>Home</span></a>
+    <a class="mobile-tab" href="#/timeline" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#clock"></use></svg><span>Timeline</span></a>
+    <a class="mobile-tab" href="#/family" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#users"></use></svg><span>Family</span></a>
+    <a class="mobile-tab" href="#/appointments" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#calendar"></use></svg><span>Visits</span></a>
+    <a class="mobile-tab" href="#/diet" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#apple"></use></svg><span>Diet</span></a>
+    <a class="mobile-tab" href="#/insights" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#activity"></use></svg><span>Insights</span></a>
+    <a class="mobile-tab" href="#/chat" data-route-link><svg class="icon" aria-hidden="true"><use href="icons.svg#clipboard"></use></svg><span>Chat</span></a>
+  </nav>
+
+  <a class="sos-fab" href="#/sos" aria-label="Urgent help, SOS"><svg class="icon" aria-hidden="true"><use href="icons.svg#alert-triangle"></use></svg></a>
+  <div class="shell-toast-region" id="shell-toasts" aria-live="polite" aria-relevant="additions"></div>
+  <div class="shell-toast-region" id="health-toasts" aria-live="polite" aria-relevant="additions"></div>
+
+  <dialog class="health-record-drawer" id="health-record-drawer" aria-labelledby="health-record-drawer-title">
+    <header class="health-drawer-head"><strong id="health-record-drawer-title">Record details</strong><button class="icon-button" type="button" data-close-record aria-label="Close record drawer"><svg class="icon" aria-hidden="true"><use href="icons.svg#close"></use></svg></button></header>
+    <div class="health-record-drawer-content" id="health-record-drawer-content"></div>
+  </dialog>
+</body>
+</html>

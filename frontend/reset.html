@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Reset password | Fieldnote Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="/js/ui.css">
+  <script type="module" src="/js/bootstrap.js"></script>
+  <script type="module" src="/auth.js"></script>
+</head>
+<body class="auth-site" data-auth-page="reset">
+  <header class="site-nav"><a class="site-brand" href="/landing.html"><span class="brand-monogram">f</span> Fieldnote Care</a><nav class="nav-actions" aria-label="Main navigation"><a href="/login.html">Sign in</a></nav></header>
+  <main class="auth-layout">
+    <section class="auth-story"><div><p class="eyebrow">Account recovery</p><h1>Start fresh, keep your notes.</h1><p>Use a recovery code you saved when the account was created.</p></div><p class="auth-story-note">One code resets one password, then it cannot be used again.</p></section>
+    <section class="auth-content" aria-labelledby="form-title">
+      <header class="auth-heading"><p class="eyebrow">Password reset / localhost only</p><h2 id="form-title">Use a recovery code.</h2><p>Enter the account email and one unused code.</p></header>
+      <form class="auth-form" data-auth-form novalidate>
+        <div class="auth-field"><label for="email">Email address</label><input class="auth-input" id="email" name="email" type="email" autocomplete="username" inputmode="email" required aria-describedby="email-error"><p class="field-error" id="email-error" hidden></p></div>
+        <div class="auth-field"><label for="recovery-code">Recovery code</label><input class="auth-input" id="recovery-code" name="recoveryCode" type="text" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" required aria-describedby="recovery-error"><p class="field-help">Enter one complete code, including its dashes.</p><p class="field-error" id="recovery-error" hidden></p></div>
+        <div class="auth-field"><label for="password">New password</label><div class="auth-input-wrap"><input class="auth-input password-input" id="password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required aria-describedby="password-help password-error"><button class="password-toggle" type="button" data-toggle-password="password" aria-label="Show password">Show</button></div><p class="field-help" id="password-help">At least 12 characters. Choose one you haven't used elsewhere.</p><div class="password-meter"><div class="meter-track" data-password-meter data-level="0" role="meter" aria-label="Password strength" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0" aria-valuetext="Not entered"><span></span><span></span><span></span><span></span></div><span class="meter-copy" data-password-copy>Strength appears as you type.</span></div><p class="field-error" id="password-error" hidden></p></div>
+        <div class="auth-field"><label for="confirm-password">Confirm new password</label><div class="auth-input-wrap"><input class="auth-input password-input" id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" required aria-describedby="confirm-error"><button class="password-toggle" type="button" data-toggle-password="confirm-password" aria-label="Show password">Show</button></div><p class="field-error" id="confirm-error" hidden></p></div>
+        <p class="form-message" id="form-message" role="alert" aria-live="polite"></p>
+        <button class="submit-button" type="submit">Reset password</button>
+      </form>
+      <div class="auth-links" style="margin-top:17px"><a href="/login.html">Back to sign in</a><a href="/register.html">Create account</a></div>
+      <p class="auth-assurance"><svg class="icon" aria-hidden="true"><use href="icons.svg#lock"></use></svg><span>Resetting your password signs out all active sessions for this local account.</span></p>
+    </section>
+  </main>
+</body>
+</html>
