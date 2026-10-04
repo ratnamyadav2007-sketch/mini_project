@@ -81,13 +81,16 @@ chat, and Chart.js load only when those routes are opened. CORS accepts the
 
 ## Deploying to Vercel
 
-The FastAPI entrypoint and deployment build are configured in `pyproject.toml`.
-Import this GitHub repository into Vercel and set Production environment
-variables for `DATABASE_URL` (a Neon PostgreSQL connection string using the
-`postgresql+psycopg://` SQLAlchemy scheme), `MASTER_ENCRYPTION_KEY`,
-`SOS_SIGNING_KEY`, and `AUTH_COOKIE_SECURE=true`. The Vercel build creates the
-fingerprinted frontend and runs Alembic migrations for Production deployments.
-Set `PUBLIC_BASE_URL` to the deployed HTTPS origin after Vercel assigns it.
+The root `vercel.json` configures separate `frontend` and `app` services. The
+frontend is built from `frontend/` and receives public requests except `/api/*`;
+the FastAPI app receives requests under `/api/*`. Import this repository into
+Vercel and set Production environment variables for `DATABASE_URL` (a Neon
+PostgreSQL connection string using the `postgresql+psycopg://` SQLAlchemy
+scheme), `MASTER_ENCRYPTION_KEY`, `SOS_SIGNING_KEY`, and
+`AUTH_COOKIE_SECURE=true`. The FastAPI production build runs Alembic migrations,
+so verify that `DATABASE_URL` points to the intended Production database before
+deploying. Set `PUBLIC_BASE_URL` to the deployed HTTPS origin after Vercel
+assigns it.
 
 Vercel's function filesystem is not durable storage. Configure persistent
 attachment storage before relying on uploads in production; the local

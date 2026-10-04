@@ -46,7 +46,7 @@ packages = ["src/app"]
 entrypoint = "app.main:app"
 
 [tool.vercel.scripts]
-build = "npm --prefix frontend ci && npm --prefix frontend run build && if [ \"$VERCEL_ENV\" = \"production\" ]; then alembic upgrade head; fi"
+build = "if [ \"$VERCEL_ENV\" = \"production\" ]; then python -m alembic upgrade head; fi"
 
 [tool.pytest.ini_options]
 pythonpath = ["src", "."]
