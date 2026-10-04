@@ -79,6 +79,23 @@ unfingerprinted assets, and compresses larger responses with gzip. Insights,
 chat, and Chart.js load only when those routes are opened. CORS accepts the
 `http://localhost` origin only; the same-origin frontend does not use CORS.
 
+## Deploying to Vercel
+
+The FastAPI entrypoint and deployment build are configured in `pyproject.toml`.
+Import this GitHub repository into Vercel and set Production environment
+variables for `DATABASE_URL` (a Neon PostgreSQL connection string using the
+`postgresql+psycopg://` SQLAlchemy scheme), `MASTER_ENCRYPTION_KEY`,
+`SOS_SIGNING_KEY`, and `AUTH_COOKIE_SECURE=true`. The Vercel build creates the
+fingerprinted frontend and runs Alembic migrations for Production deployments.
+Set `PUBLIC_BASE_URL` to the deployed HTTPS origin after Vercel assigns it.
+
+Vercel's function filesystem is not durable storage. Configure persistent
+attachment storage before relying on uploads in production; the local
+`ATTACHMENT_STORAGE_PATH` directory is not suitable for deployed user files.
+Likewise, production reminder delivery needs a separately configured worker
+and Redis-compatible broker. Do not use this deployment for real health data
+until persistent storage, backups, and privacy controls are in place.
+
 ## Frontend/API contract
 
 Shared API, serialization, error, session-cookie, and CSRF conventions are
