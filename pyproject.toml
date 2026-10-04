@@ -43,7 +43,7 @@ dev = [
 packages = ["src/app"]
 
 [tool.vercel]
-entrypoint = "app.main:app"
+entrypoint = "src.app.main:app"
 
 [tool.vercel.scripts]
 build = "if [ \"$VERCEL_ENV\" = \"production\" ]; then python -m alembic upgrade head; fi"
